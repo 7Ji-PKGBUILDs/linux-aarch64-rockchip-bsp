@@ -1,0 +1,31 @@
+From ac83519a5ebfbc8cce26d877d8e19cec9c145884 Mon Sep 17 00:00:00 2001
+From: Jat-faan Wong <122584107+wyf9661@users.noreply.github.com>
+Date: Mon, 19 Feb 2024 14:24:08 +0800
+Subject: [PATCH] ignore stringop overread warnings
+
+---
+ Makefile | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 69cdd0d29..8310f98c2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1041,6 +1041,14 @@ KBUILD_CFLAGS += $(call cc-disable-warning, stringop-overflow)
+ # Another good warning that we'll want to enable eventually
+ KBUILD_CFLAGS += $(call cc-disable-warning, restrict)
+ 
++KBUILD_CFLAGS += $(call cc-disable-warning, stringop-overread)
++KBUILD_CFLAGS += $(call cc-disable-warning, implicit-fallthrough)
++KBUILD_CFLAGS += $(call cc-disable-warning, tautological-compare)
++KBUILD_CFLAGS += $(call cc-disable-warning, int-in-bool-context)
++KBUILD_CFLAGS += $(call cc-disable-warning, unused-variable)
++KBUILD_CFLAGS += $(call cc-disable-warning, comment)
++KBUILD_CFLAGS += $(call cc-disable-warning, format)
++
+ # Enabled with W=2, disabled by default as noisy
+ ifdef CONFIG_CC_IS_GCC
+ KBUILD_CFLAGS += -Wno-maybe-uninitialized
+-- 
+2.43.2
+
