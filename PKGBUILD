@@ -2,16 +2,16 @@
 
 _desc="almost mainline rkbsp but with some patches, for Rockchip platforms"
 
-pkgbase=linux-rkbsp
+pkgbase=linux-aarch64-rockchip-bsp6.1
 pkgname=(
   "${pkgbase}"
   "${pkgbase}-headers"
 )
-pkgver='6.1.43'
-pkgrel=2
+pkgver=6.1.43
+pkgrel=1
 arch=('aarch64')
 url="https://github.com/JeffyCN/mirrors"
-_patchurl="https://github.com/wyf9661/linux-rkbsp"
+_patchurl="https://github.com/wyf9661/rkbsp6.1-patch"
 license=('GPL2')
 makedepends=( # Since we don't build the doc, most of the makedeps for other linux packages are not needed here
   'kmod' 'bc' 'dtc'
@@ -22,24 +22,36 @@ _dirname="mirrors-${_srcname}"
 
 source=(
   "${url}/archive/refs/tags/${_srcname}.tar.gz"
-  "${_patchurl}/releases/download/${_srcname}/01-rockchip.patch"
-  "${_patchurl}/releases/download/${_srcname}/02-downgrade-mali.patch"
-  "${_patchurl}/releases/download/${_srcname}/03-add-usb-wifi-driver.patch" 
+  "${_patchurl}/releases/download/Nightly/rkbsp6.1_patch.tar.gz"
+  "${_patchurl}/releases/download/Nightly/rkbsp6.1_patch_sha512sum"
   '01-gcc-wrapper.patch'
   '02-gcc-ignore-stringop-overread-warnings.patch'
+  'rockchip_defconfig'
   'linux.preset'
 )
 sha512sums=(
   '954babdc708b17133b09e13c0be612ccf9c53a3753db8b99415960c20162f16c4fedea4a7ce64fdea3d82347949cfa886d6757e864c29660757b0ba8c1aaed76'
-  '19c2d96e159e750d0374e053cc6308391d2cb102bbf2b302bb73282252445964f8f2146943369a4721d8dad7fab5ef3c9aba35e3736ff9582ce1e30fd059843d'
-  'f5b2ccb31481db83e4b6caaee9488225875783dd73be5a356d95ee2d7de14efc1ba60015c888e23dd250662bc754167fc91fd1ed2516833617df9177466843ca'
-  '2dc8ca376b2791707b1d82a07b5c66afa344d9f41007bb7a785f12d3efa1284f0a28b6bc4de906d2918af79f8d2ec8021a74bf60ff00331ef4b6e2859a9154f6'
+  'SKIP'
+  'SKIP'
   'a2daf21e3df0a0a50b0e81f4a163754acc08fb1104b875560a984123ccb83c31bd6fd47951e666faaa73723a400766cf9350b13d4ec0d566183f81cff03a68d8'
   '0cd82b847a501a09d47a81ae358528eb0e0605aa5e70f7c5f911ef58bca940fc61eb3bb7715a1eabd727528b4e50ef390c5935865fda870463adbdfe00b00ee0'
+  'e50f6d25ce714f3be006c7db55b43230a466337d2cd847de2798ddee84ce8400f339a5a25e8d9c18283678f9acc6b0f25a0c74d5c4f6ae23a6565308c5ee3349'
   '60d8c983976d37e218b17511586a316353a8ef14e08477c6d3b5b712d53886617a374b5ea9d2321e1a94c461cf979e6d94cf2c26c3df0da314e53a9223c8329f'
 )
 
+pkgver() {
+  cd "${_dirname}"
+  printf "%s.%s%s%s" \
+    "$(grep '^VERSION = ' Makefile|awk -F' = ' '{print $2}')" \
+    "$(grep '^PATCHLEVEL = ' Makefile|awk -F' = ' '{print $2}')" \
+    "$(grep '^SUBLEVEL = ' Makefile|awk -F' = ' '{print $2}'|grep -vE '^0$'|sed 's/.*/.\0/')" \
+    "$(grep '^EXTRAVERSION = ' Makefile|awk -F' = ' '{print $2}'|tr -d -|sed -E 's/rockchip[0-9]+//')"
+}
+
 prepare() {
+
+  sha512sum -c rkbsp6.1_patch_sha512sum
+
   cd "${_dirname}"
 
   echo "Patching kernel ..."
@@ -49,11 +61,11 @@ prepare() {
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "-rockchip" > localversion.20-pkgname
 
   # Prepare the configuration file
   echo "Preparing config..."
-  cat arch/arm64/configs/rockchip_defconfig > .config
+  cat ../rockchip_defconfig > .config
   make olddefconfig prepare
 
   make -s kernelrelease > version
