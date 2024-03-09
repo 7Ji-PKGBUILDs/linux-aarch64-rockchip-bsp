@@ -11,16 +11,10 @@ pkgbase = linux-aarch64-rockchip-bsp6.1
 	source = https://github.com/JeffyCN/mirrors/archive/refs/tags/kernel-6.1-2024_01_02.tar.gz
 	source = https://github.com/wyf9661/rkbsp6.1-patch/releases/download/Nightly/rkbsp6.1_patch.tar.gz
 	source = https://github.com/wyf9661/rkbsp6.1-patch/releases/download/Nightly/rkbsp6.1_patch_sha512sum
-	source = 01-gcc-wrapper.patch
-	source = 02-gcc-ignore-stringop-overread-warnings.patch
-	source = rockchip_defconfig
 	source = linux.preset
 	sha512sums = 954babdc708b17133b09e13c0be612ccf9c53a3753db8b99415960c20162f16c4fedea4a7ce64fdea3d82347949cfa886d6757e864c29660757b0ba8c1aaed76
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = a2daf21e3df0a0a50b0e81f4a163754acc08fb1104b875560a984123ccb83c31bd6fd47951e666faaa73723a400766cf9350b13d4ec0d566183f81cff03a68d8
-	sha512sums = 0cd82b847a501a09d47a81ae358528eb0e0605aa5e70f7c5f911ef58bca940fc61eb3bb7715a1eabd727528b4e50ef390c5935865fda870463adbdfe00b00ee0
-	sha512sums = e50f6d25ce714f3be006c7db55b43230a466337d2cd847de2798ddee84ce8400f339a5a25e8d9c18283678f9acc6b0f25a0c74d5c4f6ae23a6565308c5ee3349
 	sha512sums = 60d8c983976d37e218b17511586a316353a8ef14e08477c6d3b5b712d53886617a374b5ea9d2321e1a94c461cf979e6d94cf2c26c3df0da314e53a9223c8329f
 
 pkgname = linux-aarch64-rockchip-bsp6.1
