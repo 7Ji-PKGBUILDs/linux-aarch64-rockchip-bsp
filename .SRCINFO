@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-rockchip-bsp6.1
-	pkgver = 6.1.43
+	pkgver = 6.1.57
 	pkgrel = 1
 	url = https://github.com/JeffyCN/mirrors
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = linux-aarch64-rockchip-bsp6.1
 	makedepends = bc
 	makedepends = dtc
 	options = !strip
-	source = https://github.com/JeffyCN/mirrors/archive/refs/tags/kernel-6.1-2024_01_02.tar.gz
+	source = https://github.com/JeffyCN/mirrors/archive/refs/tags/kernel-6.1-2024_03_01.tar.gz
 	source = https://github.com/wyf9661/rkbsp6.1-patch/releases/download/Nightly/rkbsp6.1_patch.tar.gz
 	source = https://github.com/wyf9661/rkbsp6.1-patch/releases/download/Nightly/rkbsp6.1_patch_sha512sum
 	source = linux.preset
-	sha512sums = 954babdc708b17133b09e13c0be612ccf9c53a3753db8b99415960c20162f16c4fedea4a7ce64fdea3d82347949cfa886d6757e864c29660757b0ba8c1aaed76
+	sha512sums = 5a62391ad644588df3580f4f4cda2322f9d6ba29fe54bfd4265b98787885606e3dfe1d61936874c11da0663ccad2611853d2c6561c388d3bc22429a51085f932
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 60d8c983976d37e218b17511586a316353a8ef14e08477c6d3b5b712d53886617a374b5ea9d2321e1a94c461cf979e6d94cf2c26c3df0da314e53a9223c8329f
 
 pkgname = linux-aarch64-rockchip-bsp6.1
-	pkgdesc = The kernel-6.1-2024_01_02 of rkbsp, almost mainline rkbsp but with some patches, for Rockchip platforms
+	pkgdesc = The kernel-6.1-2024_03_01 of rkbsp, almost mainline rkbsp but with some patches, for Rockchip platforms
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -26,5 +26,5 @@ pkgname = linux-aarch64-rockchip-bsp6.1
 	backup = etc/mkinitcpio.d/linux-aarch64-rockchip-bsp6.1.preset
 
 pkgname = linux-aarch64-rockchip-bsp6.1-headers
-	pkgdesc = Headers and scripts for building modules for the kernel-6.1-2024_01_02 of rkbsp, almost mainline rkbsp but with some patches, for Rockchip platforms
+	pkgdesc = Headers and scripts for building modules for the kernel-6.1-2024_03_01 of rkbsp, almost mainline rkbsp but with some patches, for Rockchip platforms
 	depends = python

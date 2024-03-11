@@ -7,7 +7,7 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-headers"
 )
-pkgver=6.1.43
+pkgver=6.1.57
 pkgrel=1
 arch=('aarch64')
 url="https://github.com/JeffyCN/mirrors"
@@ -17,7 +17,7 @@ makedepends=( # Since we don't build the doc, most of the makedeps for other lin
   'kmod' 'bc' 'dtc'
 )
 options=(!strip)
-_srcname="kernel-6.1-2024_01_02"
+_srcname="kernel-6.1-2024_03_01"
 _dirname="mirrors-${_srcname}"
 
 source=(
@@ -27,7 +27,7 @@ source=(
   'linux.preset'
 )
 sha512sums=(
-  '954babdc708b17133b09e13c0be612ccf9c53a3753db8b99415960c20162f16c4fedea4a7ce64fdea3d82347949cfa886d6757e864c29660757b0ba8c1aaed76'
+  '5a62391ad644588df3580f4f4cda2322f9d6ba29fe54bfd4265b98787885606e3dfe1d61936874c11da0663ccad2611853d2c6561c388d3bc22429a51085f932'
   'SKIP'
   'SKIP'
   '60d8c983976d37e218b17511586a316353a8ef14e08477c6d3b5b712d53886617a374b5ea9d2321e1a94c461cf979e6d94cf2c26c3df0da314e53a9223c8329f'
