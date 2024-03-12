@@ -2,7 +2,7 @@
 
 _desc="almost mainline rkbsp but with some patches, for Rockchip platforms"
 
-pkgbase=linux-aarch64-rockchip-bsp6.1
+pkgbase=linux-aarch64-rockchip-bsp
 pkgname=(
   "${pkgbase}"
   "${pkgbase}-headers"
@@ -44,7 +44,7 @@ pkgver() {
 
 prepare() {
 
-  sha512sum -c rkbsp6.1_patch_sha512sum
+  #sha512sum -c rkbsp6.1_patch_sha512sum
 
   cd "${_dirname}"
 
@@ -73,6 +73,7 @@ build() {
   # Image and modules are built in the same run to make sure they're compatible with each other
   # -@ enables symbols in dtbs, so overlay is possible
   make ${MAKEFLAGS} DTC_FLAGS="-@" Image modules dtbs
+  #make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 }
 _package() {
   pkgdesc="The ${_srcname} of rkbsp, ${_desc}"

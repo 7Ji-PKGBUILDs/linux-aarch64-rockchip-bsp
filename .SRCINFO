@@ -1,4 +1,4 @@
-pkgbase = linux-aarch64-rockchip-bsp6.1
+pkgbase = linux-aarch64-rockchip-bsp
 	pkgver = 6.1.57
 	pkgrel = 1
 	url = https://github.com/JeffyCN/mirrors
@@ -17,14 +17,14 @@ pkgbase = linux-aarch64-rockchip-bsp6.1
 	sha512sums = SKIP
 	sha512sums = 60d8c983976d37e218b17511586a316353a8ef14e08477c6d3b5b712d53886617a374b5ea9d2321e1a94c461cf979e6d94cf2c26c3df0da314e53a9223c8329f
 
-pkgname = linux-aarch64-rockchip-bsp6.1
+pkgname = linux-aarch64-rockchip-bsp
 	pkgdesc = The kernel-6.1-2024_03_01 of rkbsp, almost mainline rkbsp but with some patches, for Rockchip platforms
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-aarch64-rockchip-bsp6.1.preset
+	backup = etc/mkinitcpio.d/linux-aarch64-rockchip-bsp.preset
 
-pkgname = linux-aarch64-rockchip-bsp6.1-headers
+pkgname = linux-aarch64-rockchip-bsp-headers
 	pkgdesc = Headers and scripts for building modules for the kernel-6.1-2024_03_01 of rkbsp, almost mainline rkbsp but with some patches, for Rockchip platforms
 	depends = python
