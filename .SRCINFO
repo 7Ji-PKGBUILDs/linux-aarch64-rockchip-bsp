@@ -10,11 +10,9 @@ pkgbase = linux-aarch64-rockchip-bsp
 	options = !strip
 	source = https://github.com/JeffyCN/mirrors/archive/refs/tags/kernel-6.1-2024_03_01.tar.gz
 	source = https://github.com/wyf9661/rkbsp6.1-patch/releases/download/Nightly/rkbsp6.1_patch.tar.gz
-	source = https://github.com/wyf9661/rkbsp6.1-patch/releases/download/Nightly/rkbsp6.1_patch_sha512sum
 	source = linux.preset
 	sha512sums = 5a62391ad644588df3580f4f4cda2322f9d6ba29fe54bfd4265b98787885606e3dfe1d61936874c11da0663ccad2611853d2c6561c388d3bc22429a51085f932
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 91be480db08eaff1f1b4685230d3c04606d3cf71e3cdd245ad293c31e993d63dc2a316f69ee091b61cd667e206ff8a64b86918d6d9207b8ebf9405b733a09bd5
 	sha512sums = 60d8c983976d37e218b17511586a316353a8ef14e08477c6d3b5b712d53886617a374b5ea9d2321e1a94c461cf979e6d94cf2c26c3df0da314e53a9223c8329f
 
 pkgname = linux-aarch64-rockchip-bsp

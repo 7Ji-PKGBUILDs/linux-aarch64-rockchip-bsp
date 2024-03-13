@@ -23,13 +23,12 @@ _dirname="mirrors-${_srcname}"
 source=(
   "${url}/archive/refs/tags/${_srcname}.tar.gz"
   "${_patchurl}/releases/download/Nightly/rkbsp6.1_patch.tar.gz"
-  "${_patchurl}/releases/download/Nightly/rkbsp6.1_patch_sha512sum"
   'linux.preset'
 )
+
 sha512sums=(
   '5a62391ad644588df3580f4f4cda2322f9d6ba29fe54bfd4265b98787885606e3dfe1d61936874c11da0663ccad2611853d2c6561c388d3bc22429a51085f932'
-  'SKIP'
-  'SKIP'
+  '91be480db08eaff1f1b4685230d3c04606d3cf71e3cdd245ad293c31e993d63dc2a316f69ee091b61cd667e206ff8a64b86918d6d9207b8ebf9405b733a09bd5'
   '60d8c983976d37e218b17511586a316353a8ef14e08477c6d3b5b712d53886617a374b5ea9d2321e1a94c461cf979e6d94cf2c26c3df0da314e53a9223c8329f'
 )
 
@@ -43,9 +42,6 @@ pkgver() {
 }
 
 prepare() {
-
-  #sha512sum -c rkbsp6.1_patch_sha512sum
-
   cd "${_dirname}"
 
   echo "Patching kernel ..."
@@ -54,8 +50,8 @@ prepare() {
   done
 
   echo "Setting version..."
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "-rockchip" > localversion.20-pkgname
+  echo "-rockchip" > localversion.10-pkgname
+  echo "-$pkgrel" > localversion.20-pkgrel
 
   # Prepare the configuration file
   echo "Preparing config..."
@@ -73,8 +69,8 @@ build() {
   # Image and modules are built in the same run to make sure they're compatible with each other
   # -@ enables symbols in dtbs, so overlay is possible
   make ${MAKEFLAGS} DTC_FLAGS="-@" Image modules dtbs
-  #make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 }
+
 _package() {
   pkgdesc="The ${_srcname} of rkbsp, ${_desc}"
   depends=('coreutils' 'kmod' 'initramfs')
